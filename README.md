@@ -80,7 +80,7 @@ Getting the IPv6 of `sensor2`
 ```
 Getting the IPv6 of `sensor7`
 ```
-containernet> sensor7 ip -6 a
+> sensor7 ip -6 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1000
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
@@ -91,7 +91,7 @@ containernet> sensor7 ip -6 a
 
 Pinging `sensor1` to `sensor2`
 ```
-containernet> sensor1 ping6 -c1 fe80::2%sensor1-pan0
+> sensor1 ping6 -c1 fe80::2%sensor1-pan0
 PING fe80::2%sensor1-pan0(fe80::2%sensor1-pan0) 56 data bytes
 64 bytes from fe80::2%sensor1-pan0: icmp_seq=1 ttl=64 time=0.099 ms
 
@@ -104,7 +104,7 @@ As we can observe, `sensor1` can ping `sensor2`
 
 Pinging `sensor1` to `sensor7`
 ```
-containernet> sensor1 ping6 -c1 fe80::7%sensor1-pan0
+> sensor1 ping -c1 fe80::7%sensor1-pan0
 PING fe80::7%sensor1-pan0(fe80::7%sensor1-pan0) 56 data bytes
 ^C
 --- fe80::7%sensor1-pan0 ping statistics ---
@@ -115,7 +115,7 @@ As we can observe, `sensor1` cannot ping `sensor7`
 
 Pinging `sensor2` to `sensor7`
 ```
-containernet> sensor2 ping6 -c1 fe80::7%sensor2-pan0
+> sensor2 ping -c1 fe80::7%sensor2-pan0
 PING fe80::7%sensor2-pan0(fe80::7%sensor2-pan0) 56 data bytes
 64 bytes from fe80::7%sensor2-pan0: icmp_seq=1 ttl=64 time=0.143 ms
 
@@ -127,6 +127,7 @@ As we can observe, `sensor2` is able to ping `sensor7`, which indicates that nod
 
 ## Use Case #2 - Routing Protocol
 
+The network topology:
 ![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/image1.png)
 
 When the network operates with the RPL protocol in storage mode there are implications for the scope of IPv6 addresses. In this mode, parent nodes retain and manage the Unique Local Addresses (ULAs) of their child sensors. ULAs are IPv6 addresses that are restricted to a specific network segment or context, meaning they are valid only within a local network and are not routable beyond it.
@@ -209,7 +210,7 @@ Running the network topology:
 
 After running the network topology, a terminal will open showing `sensor1` pinging `sensor2`. This ping sequence will continue until `sensor1` has sent 50 ICMP packets to `sensor2`, after which the terminal will automatically close. At this point, you can conclude the experiment.  
 ```
-containernet> exit
+> exit
 energy consumed by sensor1: 58.64869999999997 mW
 energy consumed by sensor2: 58.64869999999997 mW
 energy consumed by sensor7: 53.22450000000004 mW
