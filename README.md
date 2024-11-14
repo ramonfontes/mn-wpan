@@ -204,6 +204,7 @@ The traceroute output will reveal the sequence of nodes that the packets travers
 
 ## Use Case #3 - Energy Consumption
 
+### based on the traffic data
 Running the network topology:  
 `$ sudo python topology.py -b`
 
@@ -217,3 +218,18 @@ energy consumed by sensor7: 53.22450000000004 mW
 ```
 
 As observed, `sensor1` and `sensor2` exhibit higher battery consumption due to the increased packet exchange between them. This interaction demonstrates the impact of communication load on energy usage, highlighting the need for efficient power management in networks with limited battery resources. By monitoring this battery consumption, we can gain valuable insights into the energy demands of active sensor nodes, which is essential for optimizing network lifetime in IoT applications.
+
+
+### based on the CPU usage
+Running the network topology:  
+`$ sudo python topology.py -a`
+
+After some time, you can complete the experiment and measure the energy consumed by the CPU.
+```
+> exit
+energy consumed by sensor1: 3.0833333333333335e-05 Wh
+energy consumed by sensor2: 6.166666666666667e-05 Wh
+energy consumed by sensor7: 2.7750000000000007e-05 Wh
+```
+
+If the user wishes, he can perform some type of processing on some of the nodes and check the impact of that processing on energy consumption.

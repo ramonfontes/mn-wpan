@@ -16,6 +16,11 @@ from mininet.log import info, setLogLevel
 from mn_wifi.sixLoWPAN.link import LoWPAN
 from mininet.term import makeTerm
 
+if '-b' in sys.argv:
+    from mn_wifi.energy import Energy
+if '-a' in sys.argv:
+    from containernet.energy import Energy
+
 
 def topology():
     net = Containernet(iot_module='mac802154_hwsim', ipBase='192.168.210.0/24')
@@ -82,10 +87,15 @@ def topology():
     info('*** Starting network...\n')
     net.build()
 
+    if '-b' in sys.argv or '-a' in sys.argv:
+        info("*** Measuring energy consumption...\n")
+        Energy(net.sensors)
+
     if '-r' in sys.argv:
         net.configRPLD(net.sensors)
 
-    makeTerm(sensor1, title='ping', cmd="bash -c 'ping -c50 fe80::2%sensor1-pan0;'")
+    if '-b' in sys.argv:
+        makeTerm(sensor1, title='ping', cmd="bash -c 'ping -c50 fe80::2%sensor1-pan0;'")
 
     info('*** Running CLI...\n')
     CLI(net)
@@ -96,6 +106,10 @@ def topology():
         print("energy consumed by sensor1:", sensor1.wintfs[0].consumption, "mW")
         print("energy consumed by sensor2:", sensor2.wintfs[0].consumption, "mW")
         print("energy consumed by sensor7:", sensor7.wintfs[0].consumption, "mW")
+    if '-a' in sys.argv:
+        print("energy consumed by sensor1:", sensor1.wintfs[0].consumption, "Wh")
+        print("energy consumed by sensor2:", sensor2.wintfs[0].consumption, "Wh")
+        print("energy consumed by sensor7:", sensor7.wintfs[0].consumption, "Wh")
 
     info('*** Stopping network...\n')
     net.stop()
