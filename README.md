@@ -127,6 +127,9 @@ rtt min/avg/max/mdev = 0.143/0.143/0.143/0.000 ms
 ```
 As we can observe, `sensor2` is able to ping `sensor7`, which indicates that nodes within the same communication range or those directly connected through the network topology can interact with each other. This demonstrates a key principle in network communication: only nodes that are directly connected can communicate with each other. This rule is fundamental to understanding how routing protocols, like RPL (Routing Protocol for Low-Power and Lossy Networks), work to establish routes between nodes in a larger network by leveraging intermediate nodes to relay messages between distant devices.
 
+Close Mininet-WPAN with the `exit` command.
+
+
 ## Use Case #2 - Routing Protocol
 
 The network topology:
@@ -204,6 +207,8 @@ Indeed, the traceroute command confirms that `sensor2` acts as an intermediate n
 
 The traceroute output will reveal the sequence of nodes that the packets traverse, with `sensor2` appearing as a hop between `sensor7` and `sensor1` (or whichever node is initiating the communication). This behavior highlights the importance of intermediate nodes in enabling long-distance communication in networks where direct connections are not feasible due to range limitations.
 
+Close Mininet-WPAN with the `exit` command.
+
 ## Use Case #3 - Energy Consumption
 
 ### based on the traffic data
@@ -211,9 +216,8 @@ Running the network topology:
 `$ sudo python topology.py -b`
 
 
-After running the network topology, a terminal will open showing `sensor1` pinging `sensor2`. This ping sequence will continue until `sensor1` has sent 50 ICMP packets to `sensor2`, after which the terminal will automatically close. At this point, you can conclude the experiment.  
+After running the network topology, a terminal will open showing `sensor1` pinging `sensor2`. This ping sequence will continue until `sensor1` has sent 50 ICMP packets to `sensor2`, after which the terminal will automatically close, and you will get the results below:  
 ```
-> exit
 energy consumed by sensor1: 58.64869999999997 mW
 energy consumed by sensor2: 58.64869999999997 mW
 energy consumed by sensor7: 53.22450000000004 mW
@@ -226,12 +230,10 @@ As observed, `sensor1` and `sensor2` exhibit higher battery consumption due to t
 Running the network topology:  
 `$ sudo python topology.py -a`
 
-After some time, you can complete the experiment and measure the energy consumed by the CPU.
+After 60 seconds the experiment will finish, and you can run the `graph.py` file to obtain the energy consumed by the CPU of the sensors.
+
 ```
-> exit
-energy consumed by sensor1: 3.0833333333333335e-05 Wh
-energy consumed by sensor2: 6.166666666666667e-05 Wh
-energy consumed by sensor7: 2.7750000000000007e-05 Wh
+python graph.py
 ```
 
-If the user wishes, it is possible to perform some type of processing on some of the nodes and check the impact of that processing on energy consumption.
+![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/cpu_usage.png)

@@ -7,11 +7,11 @@
 
 import os
 import sys
-import time
+import subprocess
+from time import sleep
 
 from containernet.net import Containernet
 from containernet.node import DockerSensor
-from containernet.cli import CLI
 from mininet.log import info, setLogLevel
 from mn_wifi.sixLoWPAN.link import LoWPAN
 from mininet.term import makeTerm
@@ -21,11 +21,19 @@ if '-b' in sys.argv:
 if '-a' in sys.argv:
     from containernet.energy import Energy
 
+def docker_cp(source_path, destination_path):
+    try:
+        command = ["docker", "cp", f"{source_path}", f"{destination_path}"]
+
+        subprocess.run(command, check=True)
+        print(f"Arquivo(s) copiado(s) com sucesso: {source_path} -> {destination_path}")
+
+    except subprocess.CalledProcessError as e:
+        print(f"Erro ao executar o comando docker cp: {e}")
 
 def topology():
     net = Containernet(iot_module='mac802154_hwsim', ipBase='192.168.210.0/24')
 
-    path = os.path.dirname(os.path.abspath(__file__))
     dimage = 'ramonfontes/bmv2:lowpan-storing'
 
     info('*** Adding Nodes...\n')
@@ -97,8 +105,21 @@ def topology():
     if '-b' in sys.argv:
         makeTerm(sensor1, title='ping', cmd="bash -c 'ping -c50 fe80::2%sensor1-pan0;'")
 
-    info('*** Running CLI...\n')
-    CLI(net)
+    if '-a' in sys.argv:
+        makeTerm(sensor1, title='stress', cmd="bash -c 'sleep 10 && stress --cpu 1;'")
+        makeTerm(sensor2, title='stress', cmd="bash -c 'sleep 20 && stress --cpu 1;'")
+        makeTerm(sensor3, title='stress', cmd="bash -c 'sleep 30 && stress --cpu 1;'")
+        makeTerm(sensor4, title='stress', cmd="bash -c 'sleep 40 && stress --cpu 1;'")
+
+    for t in range(0, 60):
+        print(f"\r{t}", end="", flush=True)
+        sleep(1)
+
+    for n in range(1, 5):
+        container = f"mn.sensor{n}"
+        source = f"{container}:/tmp/consumption.log"
+        destination = f"./{container[3:]}.log"
+        docker_cp(source, destination)
 
     os.system('pkill -9 -f xterm')
 
@@ -106,10 +127,6 @@ def topology():
         print("energy consumed by sensor1:", sensor1.wintfs[0].consumption, "mW")
         print("energy consumed by sensor2:", sensor2.wintfs[0].consumption, "mW")
         print("energy consumed by sensor7:", sensor7.wintfs[0].consumption, "mW")
-    if '-a' in sys.argv:
-        print("energy consumed by sensor1:", sensor1.consumption, "Wh")
-        print("energy consumed by sensor2:", sensor2.consumption, "Wh")
-        print("energy consumed by sensor7:", sensor7.consumption, "Wh")
 
     info('*** Stopping network...\n')
     net.stop()
