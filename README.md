@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Ubuntu 20.04, 22.04 (might work on 24.04 too)
+* Ubuntu LTS +20.04 (22.04 - preferable)
 * Containernet - https://github.com/ramonfontes/containernet
 
 ## Use Case #1 - Basic Scenario
