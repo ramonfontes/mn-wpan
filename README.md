@@ -3,9 +3,10 @@
 ## Requirements
 
 * Ubuntu LTS +20.04 (22.04 - preferable)
-* Containernet - https://github.com/ramonfontes/containernet
+* Containernet - Installation instructions available at https://anonymous.4open.science/r/containernet-0461
+* +6.0.0 kernel
 
-## Use Case #1 - Basic Scenario
+## Use Case #1 - Simple Scenario
 
 The network topology:
 ![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/image2.png)
