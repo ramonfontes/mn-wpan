@@ -31,43 +31,43 @@ def topology():
     info('*** Adding Nodes...\n')
     sensor1 = net.addSensor('sensor1', ip6='fe80::1/64', panid='0xbeef',
                             dodag_root=True, storing_mode=2, voltage=3.7,
-                            cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
     sensor2 = net.addSensor('sensor2', ip6='fe80::2/64', panid='0xbeef', voltage=3.7,
-                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
     sensor3 = net.addSensor('sensor3', ip6='fe80::3/64', panid='0xbeef', voltage=3.7,
-                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
     sensor4 = net.addSensor('sensor4', ip6='fe80::4/64', panid='0xbeef', voltage=3.7,
-                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
     sensor5 = net.addSensor('sensor5', ip6='fe80::5/64', panid='0xbeef', voltage=3.7,
-                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
     sensor6 = net.addSensor('sensor6', ip6='fe80::6/64', panid='0xbeef', voltage=3.7,
-                            storing_mode=2, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            storing_mode=2, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
     sensor7 = net.addSensor('sensor7', ip6='fe80::7/64', panid='0xbeef', voltage=3.7,
-                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
     sensor8 = net.addSensor('sensor8', ip6='fe80::8/64', panid='0xbeef', voltage=3.7,
-                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
-    sensor9 = net.addSensor('sensor9', ip6='fe80::9/64', panid='0xbeef',
-                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+    sensor9 = net.addSensor('sensor9', ip6='fe80::9/64', panid='0xbeef', voltage=3.7,
+                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
     sensor10 = net.addSensor('sensor10', ip6='fe80::10/64', panid='0xbeef', voltage=3.7,
-                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=20,
+                            storing_mode=1, cls=DockerSensor, dimage=dimage, cpu_shares=10,
                             volumes=["/tmp/.X11-unix:/tmp/.X11-unix:rw"],
                             environment={"DISPLAY": ":0"}, privileged=True)
 
@@ -107,9 +107,9 @@ def topology():
         print("energy consumed by sensor2:", sensor2.wintfs[0].consumption, "mW")
         print("energy consumed by sensor7:", sensor7.wintfs[0].consumption, "mW")
     if '-a' in sys.argv:
-        print("energy consumed by sensor1:", sensor1.wintfs[0].consumption, "Wh")
-        print("energy consumed by sensor2:", sensor2.wintfs[0].consumption, "Wh")
-        print("energy consumed by sensor7:", sensor7.wintfs[0].consumption, "Wh")
+        print("energy consumed by sensor1:", sensor1.consumption, "Wh")
+        print("energy consumed by sensor2:", sensor2.consumption, "Wh")
+        print("energy consumed by sensor7:", sensor7.consumption, "Wh")
 
     info('*** Stopping network...\n')
     net.stop()

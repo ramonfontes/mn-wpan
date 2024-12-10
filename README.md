@@ -16,7 +16,7 @@ Without a routing protocol, nodes are limited to knowledge of the Link-Local add
 Running the network topology:  
 `$ sudo python topology.py`
 
-Getting some information of the network interfaces of `sensor1` 
+Getting some information of the network interfaces from `sensor1` 
 ```
 > sensor1 ifconfig
 lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
@@ -44,7 +44,7 @@ sensor1-wpan0: flags=195<UP,BROADCAST,RUNNING,NOARP>  mtu 123
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-Printing the routing table of `sensor1`
+Printing the routing table of `sensor1`:
 ```
 > sensor1 route -6 -n
 Kernel IPv6 routing table
@@ -57,7 +57,7 @@ ff00::/8                       ::                         U    256 5     0 senso
 ::/0                           ::                         !n   -1  1     0 lo
 ```
 
-Getting the IPv6 of `sensor1`
+Getting IPv6 from `sensor1`:
 ```
 > sensor1 ip -6 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1000
@@ -68,7 +68,7 @@ Getting the IPv6 of `sensor1`
        valid_lft forever preferred_lft forever
 ```
   
-Getting the IPv6 of `sensor2`
+Getting IPv6 from `sensor2`:
 ```
 > sensor2 ip -6 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1000
@@ -78,7 +78,8 @@ Getting the IPv6 of `sensor2`
     inet6 fe80::2/64 scope link 
        valid_lft forever preferred_lft forever
 ```
-Getting the IPv6 of `sensor7`
+
+Getting IPv6 from `sensor7`:
 ```
 > sensor7 ip -6 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1000
@@ -89,7 +90,7 @@ Getting the IPv6 of `sensor7`
        valid_lft forever preferred_lft forever
 ```
 
-Pinging `sensor1` to `sensor2`
+Pinging from `sensor1` to `sensor2`:
 ```
 > sensor1 ping6 -c1 fe80::2%sensor1-pan0
 PING fe80::2%sensor1-pan0(fe80::2%sensor1-pan0) 56 data bytes
@@ -100,9 +101,9 @@ PING fe80::2%sensor1-pan0(fe80::2%sensor1-pan0) 56 data bytes
 rtt min/avg/max/mdev = 0.099/0.099/0.099/0.000 ms
 ```
 
-As we can observe, `sensor1` can ping `sensor2`
+As we can observe, `sensor1` can ping `sensor2`.
 
-Pinging `sensor1` to `sensor7`
+Pinging from `sensor1` to `sensor7`:
 ```
 > sensor1 ping -c1 fe80::7%sensor1-pan0
 PING fe80::7%sensor1-pan0(fe80::7%sensor1-pan0) 56 data bytes
@@ -110,10 +111,10 @@ PING fe80::7%sensor1-pan0(fe80::7%sensor1-pan0) 56 data bytes
 --- fe80::7%sensor1-pan0 ping statistics ---
 1 packets transmitted, 0 received, 100% packet loss, time 0ms
 ```
-As we can observe, `sensor1` cannot ping `sensor7`
+As we can observe, `sensor1` cannot ping `sensor7`.
 
 
-Pinging `sensor2` to `sensor7`
+Pinging `sensor2` to `sensor7`:
 ```
 > sensor2 ping -c1 fe80::7%sensor2-pan0
 PING fe80::7%sensor2-pan0(fe80::7%sensor2-pan0) 56 data bytes
@@ -140,7 +141,7 @@ Running the network topology:
 > xterm sensor1 sensor2 sensor3
 ```
 
-Getting ip address of sensor2
+Getting ip address from `sensor2`:
 ```
 root@sensor2:/# ip -6 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1000
@@ -153,7 +154,7 @@ root@sensor2:/# ip -6 a
        valid_lft forever preferred_lft forever
 ```
 
-Getting ip address of sensor7
+Getting ip address from `sensor7`:
 ```
 root@sensor7:/# ip -6 a 
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1000
@@ -166,7 +167,7 @@ root@sensor7:/# ip -6 a
        valid_lft forever preferred_lft forever
 ```
 
-Pinging sensor1 to sensor2
+Pinging `sensor1` to `sensor2`:
 ```
 root@sensor1:/# ping -c 1 fd3c:be8a:173f:8e80:419:c082:e8cc:26a0
 PING fd3c:be8a:173f:8e80:419:c082:e8cc:26a0(fd3c:be8a:173f:8e80:419:c082:e8cc:26a0) 56 data bytes
@@ -176,9 +177,9 @@ PING fd3c:be8a:173f:8e80:419:c082:e8cc:26a0(fd3c:be8a:173f:8e80:419:c082:e8cc:26
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 0.420/0.420/0.420/0.000 ms
 ```
-As we can observe, `sensor1` can ping `sensor2`
+As we can observe, `sensor1` can ping `sensor2`.
 
-Pinging sensor1 to sensor7
+Pinging `sensor1` to `sensor7`:
 ```
 root@sensor1:/# ping -c1 fd3c:be8a:173f:8e80:3083:6218:aee4:e62d
 PING fd3c:be8a:173f:8e80:3083:6218:aee4:e62d(fd3c:be8a:173f:8e80:3083:6218:aee4:e62d) 56 data bytes
@@ -188,9 +189,9 @@ PING fd3c:be8a:173f:8e80:3083:6218:aee4:e62d(fd3c:be8a:173f:8e80:3083:6218:aee4:
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 0.209/0.209/0.209/0.000 ms
 ```
-As we can observe, `sensor1` can ping `sensor7`
+As we can observe, `sensor1` can ping `sensor7`.
 
-traceroute from sensor1
+Traceroute from `sensor1`:
 ```
 root@sensor1:/# traceroute fd3c:be8a:173f:8e80:3083:6218:aee4:e62d
 traceroute to fd3c:be8a:173f:8e80:3083:6218:aee4:e62d (fd3c:be8a:173f:8e80:3083:6218:aee4:e62d), 30 hops max, 80 byte packets
@@ -232,4 +233,4 @@ energy consumed by sensor2: 6.166666666666667e-05 Wh
 energy consumed by sensor7: 2.7750000000000007e-05 Wh
 ```
 
-If the user wishes, he can perform some type of processing on some of the nodes and check the impact of that processing on energy consumption.
+If the user wishes, it is possible to perform some type of processing on some of the nodes and check the impact of that processing on energy consumption.
