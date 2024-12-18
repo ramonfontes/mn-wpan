@@ -218,9 +218,9 @@ Running the network topology:
 
 After running the network topology, a terminal will open showing `sensor1` pinging `sensor2`. This ping sequence will continue until `sensor1` has sent 50 ICMP packets to `sensor2`, after which the terminal will automatically close, and you will get the results below:  
 ```
-energy consumed by sensor1: 58.64869999999997 mW
-energy consumed by sensor2: 58.64869999999997 mW
-energy consumed by sensor7: 53.22450000000004 mW
+energy consumed by sensor1: 6.351666666666667e-07 Wh
+energy consumed by sensor2: 6.351666666666667e-07 Wh
+energy consumed by sensor7: 5.927194444444446e-07 Wh
 ```
 
 As observed, `sensor1` and `sensor2` exhibit higher battery consumption due to the increased packet exchange between them. This interaction demonstrates the impact of communication load on energy usage, highlighting the need for efficient power management in networks with limited battery resources. By monitoring this battery consumption, we can gain valuable insights into the energy demands of active sensor nodes, which is essential for optimizing network lifetime in IoT applications.

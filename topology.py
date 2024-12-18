@@ -115,18 +115,19 @@ def topology():
         print(f"\r{t}", end="", flush=True)
         sleep(1)
 
-    for n in range(1, 5):
-        container = f"mn.sensor{n}"
-        source = f"{container}:/tmp/consumption.log"
-        destination = f"./{container[3:]}.log"
-        docker_cp(source, destination)
+    if '-a' in sys.argv:
+        for n in range(1, 5):
+            container = f"mn.sensor{n}"
+            source = f"{container}:/tmp/consumption.log"
+            destination = f"./{container[3:]}.log"
+            docker_cp(source, destination)
 
     os.system('pkill -9 -f xterm')
 
     if '-b' in sys.argv:
-        print("energy consumed by sensor1:", sensor1.wintfs[0].consumption, "mW")
-        print("energy consumed by sensor2:", sensor2.wintfs[0].consumption, "mW")
-        print("energy consumed by sensor7:", sensor7.wintfs[0].consumption, "mW")
+        print("energy consumed by sensor1:", sensor1.wintfs[0].consumption, "Wh")
+        print("energy consumed by sensor2:", sensor2.wintfs[0].consumption, "Wh")
+        print("energy consumed by sensor7:", sensor7.wintfs[0].consumption, "Wh")
 
     info('*** Stopping network...\n')
     net.stop()
