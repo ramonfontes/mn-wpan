@@ -216,7 +216,7 @@ Running the network topology:
 `$ sudo python topology.py -b`
 
 
-After running the network topology, a terminal will open showing `sensor1` pinging `sensor2`. This ping sequence will continue until `sensor1` has sent 50 ICMP packets to `sensor2`, after which the terminal will automatically close, and you will get the results below:  
+After running the network topology, a terminal will open showing `sensor1` pinging `sensor2`. This ping sequence will continue until `sensor1` has sent 50 ICMP packets to `sensor2`, after which you can close the Mininet-WPAN cli with the exit command, and you will get the results below:  
 ```
 energy consumed by sensor1: 6.351666666666667e-07 Wh
 energy consumed by sensor2: 6.351666666666667e-07 Wh

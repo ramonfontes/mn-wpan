@@ -12,6 +12,7 @@ from time import sleep
 
 from containernet.net import Containernet
 from containernet.node import DockerSensor
+from containernet.cli import CLI
 from mininet.log import info, setLogLevel
 from mn_wifi.sixLoWPAN.link import LoWPAN
 from mininet.term import makeTerm
@@ -111,16 +112,20 @@ def topology():
         makeTerm(sensor3, title='stress', cmd="bash -c 'sleep 30 && stress --cpu 1;'")
         makeTerm(sensor4, title='stress', cmd="bash -c 'sleep 40 && stress --cpu 1;'")
 
-    for t in range(0, 60):
-        print(f"\r{t}", end="", flush=True)
-        sleep(1)
-
     if '-a' in sys.argv:
+        for t in range(0, 60):
+            print(f"\r{t}", end="", flush=True)
+            sleep(1)
+
         for n in range(1, 5):
             container = f"mn.sensor{n}"
             source = f"{container}:/tmp/consumption.log"
             destination = f"./{container[3:]}.log"
             docker_cp(source, destination)
+
+    if '-a' not in sys.argv:
+        info('*** Running CLI...\n')
+        CLI(net)
 
     os.system('pkill -9 -f xterm')
 
