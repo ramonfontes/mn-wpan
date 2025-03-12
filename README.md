@@ -2,9 +2,12 @@
 
 ## Requirements
 
-* Ubuntu LTS +20.04 (22.04 - preferable)
-* Containernet - Installation instructions available at https://anonymous.4open.science/r/containernet-0461
-* +6.0.0 kernel
+* [Pre-configured Virtual Machine](https://drive.google.com/file/d/1R8n4thPwV2krFa6WNP0Eh05ZHZEdhw4W/view?usp=sharing)
+* Preparing the environment:
+  * Start the Pre-configured Virtual Machine
+  * Open a terminal and clone this repository: `git clone https://github.com/ramonfontes/mn-wpan`
+  * Navigate to the `mn-wpan` directory and follow the steps below.
+  
 
 ## Use Case #1 - Simple Scenario
 
