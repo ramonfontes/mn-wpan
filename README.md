@@ -3,9 +3,10 @@
 ## Requirements
 
 * [Pre-configured Virtual Machine](https://drive.google.com/file/d/1R8n4thPwV2krFa6WNP0Eh05ZHZEdhw4W/view?usp=sharing)
-* Preparing the environment:
+* Preparing the environment (user: wifi / pass: wifi):
   * Start the Pre-configured Virtual Machine
   * Open a terminal and clone this repository: `git clone https://github.com/ramonfontes/mn-wpan`
+  * Download the Docker Image: `sudo docker pull ramonfontes/bmv2:lowpan-storing`
   * Navigate to the `mn-wpan` directory and follow the steps below.
   
 
