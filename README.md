@@ -304,7 +304,7 @@ After 60 seconds the experiment will finish, and you can run the `graph.py` file
 ```
 python graph.py
 ```
-![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/figures/figure3.png)
+![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/figures/image3.png)
 
 ## LICENSE
 
