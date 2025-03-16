@@ -20,7 +20,7 @@ The ribbons considered are "Artefatos Disponíveis (SeloD)", "Artefatos Funciona
 - You need to install VirtualBox (tested with version 7.1.6) and load the [Pre-configured Virtual Machine](https://drive.google.com/file/d/1R8n4thPwV2krFa6WNP0Eh05ZHZEdhw4W/view?usp=sharing).
 - [topology.py](https://github.com/ramonfontes/mn-wpan/blob/main/topology.py) is the only file that must be run. It contains the virtual nodes and all the necessary configuration.
 - [graphy.py](https://github.com/ramonfontes/mn-wpan/blob/main/graph.py) is responsible for running the graph.
-- [figures folder](https://github.com/ramonfontes/mn-wpan/tree/main/figures) contains the figures presented within this readme file.
+- [figures](https://github.com/ramonfontes/mn-wpan/tree/main/figures) folder contains the figures presented within this readme file.
 
 ## Dependencies
 
