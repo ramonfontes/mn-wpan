@@ -13,7 +13,7 @@ This repository is structured as follows:
 
 ## Ribbons considered
 
-The ribbons considered are "Artefatos Disponíveis (SeloD)", "Artefatos Funcionais (SeloF)", and "Experimentos Reprodutíveis (SeloR)".
+The ribbons considered are "Artefatos Disponíveis (SeloD)", "Artefatos Funcionais (SeloF)", "Artefatos Sustentáveis (SeloS)", and "Experimentos Reprodutíveis (SeloR)".
 
 ## Basic information
 
