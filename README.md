@@ -20,6 +20,7 @@ The ribbons considered are "Artefatos Disponíveis (SeloD)", "Artefatos Funciona
 - You need to install VirtualBox (tested with version 7.1.6) and load the [Pre-configured Virtual Machine](https://drive.google.com/file/d/1R8n4thPwV2krFa6WNP0Eh05ZHZEdhw4W/view?usp=sharing).
 - [topology.py](https://github.com/ramonfontes/mn-wpan/blob/main/topology.py) is the only file that must be run. It contains the virtual nodes and all the necessary configuration.
 - [graphy.py](https://github.com/ramonfontes/mn-wpan/blob/main/graph.py) is responsible for running the graph.
+- [figures folder](https://github.com/ramonfontes/mn-wpan/tree/main/figures) contains the figures presented within this readme file.
 
 ## Dependencies
 
@@ -71,7 +72,7 @@ Three use cases showcases the capabilities of Mininet-WPAN: a scenario without R
 ### Use Case #1 - Without the Routing Protocol
 
 The network topology:
-![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/figures/refs/heads/main/image2.png)
+![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/figures/image2.png)
 
 Without a routing protocol, nodes are limited to knowledge of the Link-Local addresses of neighboring sensors. This means they lack routing information for reaching nodes that are more than one hop away, making it impossible to determine the appropriate next hop for multi-hop communication. Consequently, the network lacks a structure for route discovery, and each node only interacts directly with its immediate neighbors without a way to relay data over longer distances.
  
@@ -195,7 +196,7 @@ Close Mininet-WPAN with the `exit` command.
 ### Use Case #2 - With the Routing Protocol
 
 The network topology:
-![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/figures/refs/heads/main/image1.png)
+![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/figures/image1.png)
 
 When the network operates with the RPL protocol in storage mode there are implications for the scope of IPv6 addresses. In this mode, parent nodes retain and manage the Unique Local Addresses (ULAs) of their child sensors. ULAs are IPv6 addresses that are restricted to a specific network segment or context, meaning they are valid only within a local network and are not routable beyond it.
 
@@ -303,7 +304,7 @@ After 60 seconds the experiment will finish, and you can run the `graph.py` file
 ```
 python graph.py
 ```
-![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/figures/refs/heads/main/cpu_usage.png)
+![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/figures/cpu_usage.png)
 
 ## LICENSE
 
