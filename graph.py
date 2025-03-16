@@ -1,4 +1,3 @@
-import subprocess
 import re
 from datetime import datetime
 import matplotlib.pyplot as plt
@@ -71,7 +70,7 @@ for i, file_path in enumerate(file_paths):
     ax2.tick_params(axis='y', labelcolor='tab:orange')
     ax2.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
     ax2.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
-    ax2.set_ylim(top=0.01)
+    ax2.set_ylim(top=0.0005)
 
     # Formatando o eixo X para mostrar horas:minutos:segundos
     ax.set_xticks(timestamps[::len(timestamps) // 6])  # Máximo de 6 rótulos
