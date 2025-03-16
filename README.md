@@ -1,20 +1,75 @@
-## Mininet-WPAN Use Cases
+# Mininet-WPAN: Enabling WPAN and IoT Emulations with IEEE 802.15.4 Support
 
-## Requirements
+Mininet-WPAN leverages the strengths of the Mininet-WiFi architecture by extending it to support wireless personal area networks (WPANs), specifically focusing on the IEEE 802.15.4 protocol. It stands out from the tools mentioned above in several ways:
 
-* [Pre-configured Virtual Machine](https://drive.google.com/file/d/1R8n4thPwV2krFa6WNP0Eh05ZHZEdhw4W/view?usp=sharing)
-* Preparing the environment (user: wifi / pass: wifi):
-  * Start the Pre-configured Virtual Machine
-  * Open a terminal and clone this repository: `git clone https://github.com/ramonfontes/mn-wpan`
-  * Download the Docker Image: `sudo docker pull ramonfontes/bmv2:lowpan-storing`
-  * Navigate to the `mn-wpan` directory and follow the steps below.
-  
+- Real-time Emulation: It operates as an emulator, allowing real-time experimentation and interaction with actual network configurations. This provides a more realistic environment for testing;
+- SDN Integration: built on top of Mininet, Mininet-WPAN inherits strong support for SDN. This enables users to experiment with software-defined networking technologies in low-power networks;
+- Lightweight Virtualization: It supports lightweight virtualization, making it scalable and efficient for testing large networks without the overhead of full virtual machine simulations. This makes it particularly suitable for rapid experimentation, debugging, and prototyping;
+- Customization and Flexibility: the use of the mac802154 Linux wireless device driver allows Mininet-WPAN to support flexible, low-level manipulation of network interfaces. It is ideal for researchers who need fine-grained control over network behaviors.
 
-## Use Case #1 - Simple Scenario
+## Readme structure
+
+This repository is structured as follows:
+
+## Ribbons considered
+
+The ribbons considered are "Artefatos Disponíveis (SeloD)", "Artefatos Funcionais (SeloF)", and "Experimentos Reprodutíveis (SeloR)".
+
+## Basic information
+
+You need to install VirtualBox (tested with version 7.1.6) and load the [Pre-configured Virtual Machine](https://drive.google.com/file/d/1R8n4thPwV2krFa6WNP0Eh05ZHZEdhw4W/view?usp=sharing).
+
+## Dependencies
+
+The pre-configured VM comes with all necessary dependencies pre-installed.
+
+## Security Concerns
+
+The execution of this artifact poses no risk to evaluators.
+
+## Installation
+
+To access the pre-configured VM, use the following credentials: 
+- Username: wifi
+- Password: wifi
+
+Then, follow these steps:
+  - Start the Pre-configured Virtual Machine
+  - Open a terminal and clone this repository: `git clone https://github.com/ramonfontes/mn-wpan`
+  - Download the Docker Image: `sudo docker pull ramonfontes/bmv2:lowpan-storing`
+  - Navigate to the `mn-wpan` directory and follow the steps below.
+
+# Minimal Test 
+
+For a minimum test of Mininet-WPAN operation, we will partially run the Use Case #1.
+
+- Step 1: Running the network topology:  
+```
+$ sudo python topology.py
+```
+
+- Step 2: Pinging `sensor2` to `sensor7`:
+```
+> sensor2 ping -c1 fe80::7%sensor2-pan0
+PING fe80::7%sensor2-pan0(fe80::7%sensor2-pan0) 56 data bytes
+64 bytes from fe80::7%sensor2-pan0: icmp_seq=1 ttl=64 time=0.143 ms
+
+--- fe80::7%sensor2-pan0 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.143/0.143/0.143/0.000 ms
+```
+As we can observe, `sensor2` is able to ping `sensor7`, which indicates that nodes within the same communication range or those directly connected through the network topology can interact with each other.
+
+Close Mininet-WPAN with the `exit` command.
+
+## Experiments
+
+Three use cases showcases the capabilities of Mininet-WPAN: a scenario without RPL; other utilizing RPL and the last one about energy consumption. In these case studies, ten IEEE 802.15.4-based wireless sensors were emulated.
+
+### Use Case #1 - Without the Routing Protocol
 
 The network topology:
 ![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/image2.png)
-
 
 Without a routing protocol, nodes are limited to knowledge of the Link-Local addresses of neighboring sensors. This means they lack routing information for reaching nodes that are more than one hop away, making it impossible to determine the appropriate next hop for multi-hop communication. Consequently, the network lacks a structure for route discovery, and each node only interacts directly with its immediate neighbors without a way to relay data over longer distances.
  
@@ -134,7 +189,7 @@ As we can observe, `sensor2` is able to ping `sensor7`, which indicates that nod
 Close Mininet-WPAN with the `exit` command.
 
 
-## Use Case #2 - Routing Protocol
+### Use Case #2 - With the Routing Protocol
 
 The network topology:
 ![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/image1.png)
@@ -213,7 +268,7 @@ The traceroute output will reveal the sequence of nodes that the packets travers
 
 Close Mininet-WPAN with the `exit` command.
 
-## Use Case #3 - Energy Consumption
+### Use Case #3 - Energy Consumption
 
 ### based on the traffic data
 Running the network topology:  
@@ -239,5 +294,8 @@ After 60 seconds the experiment will finish, and you can run the `graph.py` file
 ```
 python graph.py
 ```
-
 ![](https://raw.githubusercontent.com/ramonfontes/mn-wpan/refs/heads/main/cpu_usage.png)
+
+## LICENSE
+
+Apache License Version 2.0, January 2004 http://www.apache.org/licenses/
