@@ -74,7 +74,9 @@ The network topology:
 Without a routing protocol, nodes are limited to knowledge of the Link-Local addresses of neighboring sensors. This means they lack routing information for reaching nodes that are more than one hop away, making it impossible to determine the appropriate next hop for multi-hop communication. Consequently, the network lacks a structure for route discovery, and each node only interacts directly with its immediate neighbors without a way to relay data over longer distances.
  
 Running the network topology:  
-`$ sudo python topology.py`
+```
+$ sudo python topology.py
+```
 
 Getting some information of the network interfaces from `sensor1` 
 ```
@@ -188,7 +190,6 @@ As we can observe, `sensor2` is able to ping `sensor7`, which indicates that nod
 
 Close Mininet-WPAN with the `exit` command.
 
-
 ### Use Case #2 - With the Routing Protocol
 
 The network topology:
@@ -197,9 +198,11 @@ The network topology:
 When the network operates with the RPL protocol in storage mode there are implications for the scope of IPv6 addresses. In this mode, parent nodes retain and manage the Unique Local Addresses (ULAs) of their child sensors. ULAs are IPv6 addresses that are restricted to a specific network segment or context, meaning they are valid only within a local network and are not routable beyond it.
 
 Running the network topology:  
-`$ sudo python topology.py -r`
+```
+$ sudo python topology.py -r
+```
 
-
+Openning terminals for `sensor1`, `sensor2` and `sensor3`.
 ```
 > xterm sensor1 sensor2 sensor3
 ```
@@ -272,7 +275,9 @@ Close Mininet-WPAN with the `exit` command.
 
 ### based on the traffic data
 Running the network topology:  
-`$ sudo python topology.py -b`
+```
+$ sudo python topology.py -b
+```
 
 
 After running the network topology, a terminal will open showing `sensor1` pinging `sensor2`. This ping sequence will continue until `sensor1` has sent 50 ICMP packets to `sensor2`, after which you can close the Mininet-WPAN cli with the exit command, and you will get the results below:  
@@ -287,7 +292,9 @@ As observed, `sensor1` and `sensor2` exhibit higher battery consumption due to t
 
 ### based on the CPU usage
 Running the network topology:  
-`$ sudo python topology.py -a`
+```
+$ sudo python topology.py -a
+```
 
 After 60 seconds the experiment will finish, and you can run the `graph.py` file to obtain the energy consumed by the CPU of the sensors.
 
