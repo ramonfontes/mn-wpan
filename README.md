@@ -17,8 +17,8 @@ This repository is structured as follows:
 │   ├── image3.png  
 ├── graph.py 
 ├── topology.py  
-├── LICENSE  
-└── README
+├── LICENSE.md  
+└── README.md
 ```
 
 ## Ribbons considered
