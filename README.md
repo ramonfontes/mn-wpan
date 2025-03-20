@@ -1,4 +1,4 @@
-# Mininet-WPAN: Enabling WPAN and IoT Emulations with IEEE 802.15.4 Support
+  # Mininet-WPAN: Enabling WPAN and IoT Emulations with IEEE 802.15.4 Support
 
 Mininet-WPAN leverages the strengths of the Mininet-WiFi architecture by extending it to support wireless personal area networks (WPANs), specifically focusing on the IEEE 802.15.4 protocol. It stands out from the tools mentioned above in several ways:
 
@@ -10,6 +10,16 @@ Mininet-WPAN leverages the strengths of the Mininet-WiFi architecture by extendi
 ## Readme structure
 
 This repository is structured as follows:
+```
+├── figures  
+│   ├── image1.png
+│   ├── image2.png
+│   ├── image3.png  
+├── graph.py 
+├── topology.py  
+├── LICENSE  
+└── README
+```
 
 ## Ribbons considered
 
