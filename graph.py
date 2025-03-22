@@ -64,7 +64,7 @@ for i, file_path in enumerate(file_paths):
     ax.set_xlabel('Time', fontsize=8)
     ax.set_ylabel('CPU Usage (%)', color='tab:blue', fontsize=8)
     ax.tick_params(axis='y', labelcolor='tab:blue')
-    ax.set_ylim(top=110)
+    ax.set_ylim(top=20)
 
     ax2.set_ylabel('Energy \nConsumption (Wh)', color='tab:orange', fontsize=8)
     ax2.tick_params(axis='y', labelcolor='tab:orange')
