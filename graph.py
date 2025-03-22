@@ -64,17 +64,17 @@ for i, file_path in enumerate(file_paths):
     ax.set_xlabel('Time', fontsize=8)
     ax.set_ylabel('CPU Usage (%)', color='tab:blue', fontsize=8)
     ax.tick_params(axis='y', labelcolor='tab:blue')
-    ax.set_ylim(top=110)
+    ax.set_ylim(top=20)
 
     ax2.set_ylabel('Energy \nConsumption (Wh)', color='tab:orange', fontsize=8)
     ax2.tick_params(axis='y', labelcolor='tab:orange')
     ax2.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
     ax2.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
-    ax2.set_ylim(top=0.0005)
+    ax2.set_ylim(top=0.0007)
 
     # Formatando o eixo X para mostrar horas:minutos:segundos
-    ax.set_xticks(timestamps[::len(timestamps) // 6])  # Máximo de 6 rótulos
-    ax.set_xticklabels([ts.strftime('%H:%M:%S') for ts in timestamps[::len(timestamps) // 6]])
+    ax.set_xticks(timestamps[::len(timestamps) // 3])  # Máximo de 6 rótulos
+    ax.set_xticklabels([ts.strftime('%H:%M:%S') for ts in timestamps[::len(timestamps) // 3]])
     ax.set_xticklabels([])
 
     # Adicionando legendas
