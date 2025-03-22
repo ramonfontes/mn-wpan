@@ -135,7 +135,7 @@ def topology():
         # Retrieve consumption logs from sensors
         for n in range(1, 5):
             container = f"mn.sensor{n}"
-            source = f"{container}:/tmp/consumption.log"
+            source = f"{container}:/tmp/consumption-cpu"
             destination = f"./{container[3:]}.log"
             docker_cp(source, destination)
 
