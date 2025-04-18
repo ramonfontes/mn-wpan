@@ -39,6 +39,10 @@ The pre-configured VM comes with all necessary dependencies pre-installed. Howev
 - Ubuntu LTS 22.04+
 - Kernel 6.8+
 - Containernet - https://github.com/ramonfontes/containernet: this is a modified release of containernet that includes Mininet-WPAN.
+  - Installation Steps:
+    - `git clone https://github.com/ramonfontes/containernet --branch mn-wpan`
+    - `cd containernet`
+    - `sudo util/install.sh -W`
 
 ## Security Concerns
 
