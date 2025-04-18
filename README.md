@@ -34,7 +34,11 @@ The ribbons considered are "Artefatos Disponíveis (SeloD)", "Artefatos Funciona
 
 ## Dependencies
 
-The pre-configured VM comes with all necessary dependencies pre-installed.
+The pre-configured VM comes with all necessary dependencies pre-installed. However, if you wish to reproduce this study in a separate environment, please ensure the following requirements are met:
+
+- Ubuntu LTS 22.04+
+- Kernel 6.8+
+- Containernet - https://github.com/ramonfontes/containernet: this is a modified release of containernet that includes Mininet-WPAN.
 
 ## Security Concerns
 
